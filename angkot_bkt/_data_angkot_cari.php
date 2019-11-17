@@ -31,6 +31,14 @@ st_contains(ST_Centroid(hotel.geom),ST_centroid(angkot.geom)) < 200 and
 room.name='$nilai' and room.price<=500000 limit 3";
 } elseif ($tipe == 6){
 	$querysearch = "SELECT distinct angkot.id, angkot.number, angkot.destination, angkot.track, angkot.cost, angkot.route_color, angkot.geom, ST_X(ST_Centroid(angkot.geom)) AS lon, ST_Y(ST_CENTROID(angkot.geom)) As lat, angkot_color.color FROM culinary join detail_culinary on culinary.id=detail_culinary.id_culinary join culinary_place on detail_culinary.id_culinary=culinary.id join detail_culinary_place on culinary_place.id=detail_culinary_place.id_culinary_place join angkot on detail_culinary_place.id_angkot=angkot.id JOIN angkot_color ON angkot_color.id=angkot.id_color where ST_Distance_sphere(ST_centroid(culinary_place.geom),ST_Centroid(angkot.geom)) < 200 and culinary.name like '$nilai%'";
+}elseif ($tipe == 7) {
+	$querysearch = "SELECT angkot.id, angkot.destination, angkot.track, angkot.cost, angkot.number, angkot.route_color, angkot.geom, ST_X(ST_Centroid(angkot.geom)) AS lon, ST_Y(ST_CENTROID(angkot.geom)) As lat, angkot_color.color FROM angkot left join angkot_color on angkot_color.id = angkot.id_color
+			join detail_worship_place as dwp on angkot.id = dwp.id_angkot
+			join worship_place on dwp.id_worship_place = worship_place.id
+			join detail_event de on worship_place.id = de.id_worship_place
+			join event on de.id_event = event.id
+			where event.id = $nilai";
+	# code...
 }
  //  var_dump($querysearch);
  //  die();
