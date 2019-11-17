@@ -225,6 +225,36 @@ sidebar start-->
             </li>
               </ul>
             </li>
+                    <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-search"></i>
+                        <span>Fungsional Yulia </span>
+                    </a>
+                    <ul class="sub">
+                      <li class="sub-menu">
+                      <a  href="javascript:;">
+                        <i class="fa fa-search"></i> <span>By Event Worship</span></a>
+                      <ul class="sub">
+                        <li style="margin-top:10px">
+                           <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_f1_y">
+                          <?php                      
+                          include('../connect.php');    
+                          $querysearch="SELECT id, name FROM event"; 
+                          $hasil=mysqli_query($conn, $querysearch);
+
+                            while($baris = mysqli_fetch_array($hasil)){
+                                $id=$baris['id'];
+                                $color=$baris['name'];
+                                echo "<option value='$id'>$color</option>";
+                            }
+                          ?>
+                        </select>
+                        </li>                                
+                        <li><a onclick="angkot_sekitar_destination(5)" style="cursor:pointer;background:none">Search</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  </li>
               <!-- sidebar menu end-->
           </div>
       </aside>
