@@ -735,6 +735,9 @@
           }else if (tipe == 6){
             document.getElementById('judul_table').innerHTML="Search angkot by culinary";
             y = document.getElementById('select_a').value;
+          }else if (tipe == 7){
+            document.getElementById('judul_table').innerHTML="Search angkot by event worship";
+            y = document.getElementById('select_f1_y').value;
           }
 
           if (y == "") {          
